@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Guru Ji Properties - Buy, rent and discover verified properties in Charkhi Dadri and nearby areas.">
+  <meta name="theme-color" content="#0b0f19">
+  <title>Guru Ji Properties | Charkhi Dadri</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-wrapper">
+    <a href="#" class="logo">GURU JI <span>PROPERTIES</span></a>
+    <nav>
+      <a href="#properties">Properties</a>
+      <a href="#services">Services</a>
+      <a href="#why-us">Why Us</a>
+      <a href="#enquiry">Contact</a>
+    </nav>
+    <a href="#enquiry" class="btn btn-gold nav-cta">Find Property</a>
+    <button class="menu-btn" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<main>
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="container hero-inner">
+    <div class="eyebrow">CHARKHI DADRI • HARYANA</div>
+    <h1>Find a place you'll<br><span>love to call home.</span></h1>
+    <p>Buy, rent or sell with a trusted local property consultancy focused on Charkhi Dadri and nearby areas.</p>
+
+    <div class="search-panel">
+      <div class="search-tabs">
+        <button class="search-tab active" data-purpose="all">All</button>
+        <button class="search-tab" data-purpose="Buy">Buy</button>
+        <button class="search-tab" data-purpose="Rent">Rent</button>
+      </div>
+      <div class="search-fields">
+        <div class="search-field wide">
+          <label>Location</label>
+          <input id="filter-location" type="text" placeholder="Search Charkhi Dadri, Bhiwani...">
+        </div>
+        <div class="search-field">
+          <label>Property Type</label>
+          <select id="filter-type">
+            <option value="all">Any type</option>
+            <option>Residential Plot</option>
+            <option>House / Villa</option>
+            <option>Commercial</option>
+            <option>Farmhouse</option>
+          </select>
+        </div>
+        <div class="search-field">
+          <label>Maximum Budget</label>
+          <select id="filter-budget">
+            <option value="all">Any budget</option>
+            <option value="2500000">₹25 Lakhs</option>
+            <option value="5000000">₹50 Lakhs</option>
+            <option value="10000000">₹1 Crore</option>
+            <option value="20000000">₹2 Crore</option>
+          </select>
+        </div>
+        <button class="search-btn" onclick="scrollToProperties()">Search <span>→</span></button>
+      </div>
+      <div class="quick-links">
+        <span>Popular:</span>
+        <button onclick="quickSearch('House / Villa')">Houses</button>
+        <button onclick="quickSearch('Residential Plot')">Plots</button>
+        <button onclick="quickSearch('Commercial')">Commercial</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="trust-strip">
+  <div class="container trust-grid">
+    <div><strong>5.0 ★</strong><span>Google Rating</span></div>
+    <div><strong>265+</strong><span>Client Reviews</span></div>
+    <div><strong>10+ Yrs</strong><span>Local Experience</span></div>
+    <div><strong>100%</strong><span>Paperwork Support</span></div>
+  </div>
+</section>
+
+<section id="properties" class="section">
+  <div class="container">
+    <div class="section-heading">
+      <div>
+        <div class="eyebrow">PROPERTY COLLECTION</div>
+        <h2>Featured properties</h2>
+        <p>Explore selected listings and contact us directly for a visit.</p>
+      </div>
+      <button class="reset-btn" onclick="resetFilters()">Reset filters</button>
+    </div>
+
+    <div class="filter-card">
+      <div class="filter-grid">
+        <div class="filter-group">
+          <label>Purpose</label>
+          <select id="filter-purpose">
+            <option value="all">All</option><option value="Buy">Buy</option><option value="Rent">Rent</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Type</label>
+          <select id="filter-type-2">
+            <option value="all">All Properties</option><option>Residential Plot</option><option>House / Villa</option><option>Commercial</option><option>Farmhouse</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Area</label>
+          <select id="filter-area">
+            <option value="all">Any size</option><option value="100">Up to 100 Gaj</option><option value="200">Up to 200 Gaj</option><option value="500">Up to 500 Gaj</option><option value="501">500+ Gaj</option>
+          </select>
+        </div>
+        <div class="filter-group">
+          <label>Bedrooms</label>
+          <select id="filter-beds">
+            <option value="all">Any</option><option value="1">1+</option><option value="2">2+</option><option value="3">3+</option><option value="4">4+</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <div class="results-bar">
+      <span id="result-count">0 properties found</span>
+      <select id="sort-properties" class="sort-select">
+        <option value="newest">Newest first</option>
+        <option value="price-low">Price: Low to High</option>
+        <option value="price-high">Price: High to Low</option>
+      </select>
+    </div>
+
+    <div class="property-grid" id="properties-grid"></div>
+    <div id="empty-state" class="empty-state" hidden>
+      <div>⌂</div><h3>No matching properties</h3><p>Try changing your filters or reset the search.</p><button class="btn btn-gold" onclick="resetFilters()">Reset Search</button>
+    </div>
+  </div>
+</section>
+
+<section id="why-us" class="section alt-section">
+  <div class="container">
+    <div class="section-heading centered">
+      <div class="eyebrow">WHY GURU JI</div>
+      <h2>Local knowledge. Straightforward service.</h2>
+      <p>From finding the right property to documentation and registry support, we help you move forward with confidence.</p>
+    </div>
+    <div class="benefit-grid">
+      <article><div class="benefit-icon">⌖</div><h3>Local Expertise</h3><p>Property options focused on Charkhi Dadri and surrounding locations.</p></article>
+      <article><div class="benefit-icon">✓</div><h3>Property Guidance</h3><p>Compare options based on location, budget, size and purpose.</p></article>
+      <article><div class="benefit-icon">▣</div><h3>Documentation Support</h3><p>Guidance through verification, paperwork and the buying process.</p></article>
+      <article><div class="benefit-icon">☎</div><h3>Direct Assistance</h3><p>Speak directly with the team for visits, availability and enquiries.</p></article>
+    </div>
+  </div>
+</section>
+
+<section id="services" class="section">
+  <div class="container">
+    <div class="section-heading centered">
+      <div class="eyebrow">OUR SERVICES</div><h2>More than property listings</h2><p>Support for buyers, sellers, landlords and property seekers.</p>
+    </div>
+    <div class="service-grid">
+      <article class="service-card"><span>01</span><h3>Buy Property</h3><p>Find houses, plots, farmhouses and commercial properties matching your needs.</p><a href="#properties">Explore listings →</a></article>
+      <article class="service-card"><span>02</span><h3>Sell Property</h3><p>Share your property requirement and get assistance reaching potential buyers.</p><a href="#enquiry">Contact us →</a></article>
+      <article class="service-card"><span>03</span><h3>Rent Property</h3><p>Discover rental options and enquire directly about availability.</p><a href="#properties">View rentals →</a></article>
+      <article class="service-card"><span>04</span><h3>Turnkey Building</h3><p>End-to-end construction support from planning and floor layouts to finishing.</p><a href="#enquiry">Discuss a project →</a></article>
+    </div>
+  </div>
+</section>
+
+<section id="enquiry" class="section enquiry-section">
+  <div class="container">
+    <div class="enquiry-card">
+      <div class="enquiry-copy">
+        <div class="eyebrow">LET'S FIND YOUR PROPERTY</div>
+        <h2>Tell us what you're looking for.</h2>
+        <p>Share your requirement and our team can help shortlist suitable properties.</p>
+        <div class="contact-buttons">
+          <a href="tel:+919999999999" class="btn btn-gold">☎ Call Now</a>
+          <a href="https://wa.me/919999999999" target="_blank" class="btn btn-wa">WhatsApp</a>
+        </div>
+      </div>
+      <form id="lead-form" class="lead-form" onsubmit="handleLeadSubmit(event)">
+        <div class="two-col">
+          <div class="form-group"><label>Name</label><input id="lead-name" required placeholder="Your full name"></div>
+          <div class="form-group"><label>Phone</label><input id="lead-phone" required pattern="[0-9]{10}" placeholder="10-digit number"></div>
+        </div>
+        <div class="two-col">
+          <div class="form-group"><label>Looking for</label><select id="lead-type"><option>Plot</option><option>House</option><option>Commercial Space</option><option>Farmhouse</option><option>Rental</option></select></div>
+          <div class="form-group"><label>Budget</label><input id="lead-budget" placeholder="e.g. ₹30 Lakhs"></div>
+        </div>
+        <div class="form-group"><label>Preferred location</label><input id="lead-location" placeholder="e.g. Charkhi Dadri"></div>
+        <div class="form-group"><label>Message</label><textarea id="lead-message" rows="3" placeholder="Tell us what you need..."></textarea></div>
+        <button type="submit" class="btn btn-gold full">Submit Enquiry</button>
+        <p id="lead-success" class="success-message" hidden>Thanks! Your enquiry has been recorded.</p>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer>
+  <div class="container footer-inner">
+    <div><a class="logo" href="#">GURU JI <span>PROPERTIES</span></a><p>Property consultancy in Charkhi Dadri, Haryana.</p></div>
+    <div class="footer-links"><a href="#properties">Properties</a><a href="#services">Services</a><a href="#enquiry">Contact</a></div>
+  </div>
+  <div class="container copyright">© 2026 Guru Ji Properties. All rights reserved.</div>
+</footer>
+
+<div id="property-modal" class="modal" aria-hidden="true">
+  <div class="modal-backdrop" onclick="closeModal()"></div>
+  <div class="modal-content">
+    <button class="modal-close" onclick="closeModal()" aria-label="Close">×</button>
+    <div class="modal-gallery">
+      <button class="gallery-arrow prev" onclick="changeGallery(-1)">‹</button>
+      <img id="modal-main-img" src="" alt="Property">
+      <button class="gallery-arrow next" onclick="changeGallery(1)">›</button>
+      <span id="gallery-counter" class="gallery-counter"></span>
+    </div>
+    <div id="modal-thumbs" class="gallery-thumbs"></div>
+    <div class="modal-heading">
+      <div><span id="modal-status" class="status-badge"></span><h2 id="modal-title"></h2><p id="modal-location"></p></div>
+      <div id="modal-price" class="modal-price"></div>
+    </div>
+    <div id="modal-specs" class="modal-specs"></div>
+    <h3>About this property</h3><p id="modal-desc" class="modal-desc"></p>
+    <h3>Location</h3><div id="modal-map-wrap" class="map-placeholder"></div>
+    <div class="modal-actions"><a id="modal-wa-btn" href="#" target="_blank" class="btn btn-wa">WhatsApp Enquiry</a><a href="tel:+919999999999" class="btn btn-gold">Call Owner</a></div>
+  </div>
+</div>
+
+<div class="mobile-contact">
+  <a href="tel:+919999999999">☎ Call</a><a href="https://wa.me/919999999999" target="_blank">WhatsApp</a>
+</div>
+
+<div id="toast" class="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
